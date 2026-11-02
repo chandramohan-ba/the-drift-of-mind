@@ -1,0 +1,112 @@
+/* ============================================================
+   The Drift of Mind — quiet, timeless, book-like edition (v5)
+   ============================================================ */
+:root {
+  --cream: #FAF6F0; --cream-deep: #F3EDE3;
+  --forest: #2F4F3E; --forest-deep: #24402F;
+  --terracotta: #B85C38; --terracotta-soft: #C98B6B;
+  --ink: #3E3A36; --ink-soft: #6B635A;
+  --line: #D8CFC2; --gold: #C9A96A;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Source Serif 4', Georgia, serif; color:var(--ink);
+  min-height:100vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:40px 16px 96px;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(250,246,240,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.38) 100%),
+    linear-gradient(160deg, var(--forest) 0%, var(--forest-deep) 100%);
+  background-attachment: fixed;
+}
+#book-wrap { width:100%; max-width:980px; display:flex; justify-content:center;
+  filter:drop-shadow(0 26px 50px rgba(0,0,0,0.5)); }
+#book { width:100%; }
+.page {
+  background:
+    radial-gradient(circle at 18% 10%, rgba(201,169,106,0.06), transparent 42%),
+    var(--cream);
+  padding:56px 48px; display:flex; flex-direction:column; justify-content:center;
+  position:relative;
+}
+.page::after { content:""; position:absolute; inset:10px;
+  border:1px solid rgba(201,169,106,0.28); pointer-events:none; }
+h1,h2,h3 { font-family:'Cormorant Garamond',serif; color:var(--forest); font-weight:600; }
+h1 { font-size:clamp(2.4rem,5vw,3.4rem); line-height:1.12; margin-bottom:20px; }
+h2 { font-size:clamp(1.6rem,3vw,2rem); margin-bottom:16px; }
+h3 { font-size:1.3rem; margin:22px 0 8px; color:var(--terracotta); }
+p { line-height:1.8; margin-bottom:15px; font-size:1.03rem; }
+em { color:var(--terracotta); }
+.dropcap::first-letter { font-family:'Cormorant Garamond',serif; font-size:3.4em;
+  float:left; line-height:0.82; padding:6px 10px 0 0; color:var(--terracotta); }
+.ornament { display:flex; align-items:center; gap:14px; margin:22px 0;
+  color:var(--gold); font-size:0.95rem; letter-spacing:4px; }
+.ornament::before,.ornament::after { content:""; flex:1; height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+.reveal { opacity:0; transform:translateY(16px);
+  animation:reveal 1s cubic-bezier(.22,.8,.3,1) forwards; }
+.reveal.d1{animation-delay:.18s} .reveal.d2{animation-delay:.38s}
+.reveal.d3{animation-delay:.58s} .reveal.d4{animation-delay:.78s}
+@keyframes reveal { to { opacity:1; transform:translateY(0); } }
+.cover { background:var(--forest-deep); color:var(--cream);
+  text-align:center; align-items:center; justify-content:center; }
+.cover::after { border-color:rgba(201,169,106,0.4); }
+.cover h1 { color:var(--cream); letter-spacing:2px; text-shadow:0 2px 20px rgba(0,0,0,0.3); }
+.cover .tagline { color:#E8DFD2; font-style:italic; font-size:1.06rem;
+  margin:12px auto; max-width:440px; line-height:1.65; }
+.cover .rule { width:90px; height:1px; margin:22px auto;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+.cover button { margin-top:26px; background:transparent; color:var(--terracotta-soft);
+  border:1px solid var(--terracotta-soft); padding:13px 34px;
+  font-family:'Cormorant Garamond',serif; font-size:1.15rem; letter-spacing:2px;
+  cursor:pointer; transition:color .35s, background .35s; }
+.cover button:hover { color:var(--cream); background:var(--terracotta); border-color:var(--terracotta); }
+.preface-meta { font-size:.8rem; letter-spacing:3px; text-transform:uppercase;
+  color:var(--ink-soft); margin-bottom:10px; }
+.toc-group { margin-top:20px; }
+.toc-group-title { font-family:'Cormorant Garamond',serif; font-style:italic;
+  color:var(--terracotta); font-size:1.2rem; border-bottom:1px solid var(--line);
+  padding-bottom:8px; margin-bottom:6px; }
+.toc-item { display:flex; justify-content:space-between; align-items:baseline;
+  padding:13px 6px; border-bottom:1px dotted #CFC5B6; cursor:pointer;
+  transition:color .3s, padding-left .3s; position:relative; }
+.toc-item::before { content:"\u2767"; position:absolute; left:-18px; opacity:0;
+  color:var(--terracotta); transition:all .3s; }
+.toc-item:hover { padding-left:16px; color:var(--terracotta); }
+.toc-item:hover::before { opacity:1; left:-4px; }
+.toc-item .num { color:#8A8177; margin-right:12px; font-size:.9rem; }
+.toc-item .status { font-size:.8rem; font-style:italic; color:var(--gold); letter-spacing:1px; }
+.coming-soon { text-align:center; align-items:center; }
+.coming-soon .seal { width:74px; height:74px; margin:0 auto 18px;
+  border:1px solid var(--gold); border-radius:50%; display:flex;
+  align-items:center; justify-content:center;
+  font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--gold); }
+.coming-soon .mark { font-family:'Cormorant Garamond',serif; font-size:1.9rem;
+  color:var(--terracotta); margin-bottom:10px; }
+.caution-page { background:var(--cream-deep); }
+.caution-page .seal-line { text-align:center; color:var(--terracotta);
+  letter-spacing:5px; font-size:.85rem; margin-bottom:18px; }
+.connect-page { background:var(--forest-deep); color:var(--cream);
+  text-align:center; align-items:center; }
+.connect-page h2 { color:var(--cream); }
+.connect-page p { color:#E8DFD2; max-width:430px; }
+.connect-page a { color:var(--terracotta-soft); text-decoration:none;
+  border-bottom:1px solid rgba(201,139,107,0.5); transition:border-color .3s; }
+.connect-page a:hover { border-color:var(--terracotta-soft); }
+.kj-link { margin-top:30px; font-size:.88rem; color:#C9BFAF; }
+.kj-link a { color:var(--terracotta-soft); border-bottom:1px solid rgba(201,139,107,0.4); }
+.book-footer { position:fixed; bottom:0; left:0; right:0; z-index:60;
+  display:flex; justify-content:center; align-items:center; gap:14px;
+  padding:14px 16px;
+  background:linear-gradient(to top, rgba(20,35,27,0.92), rgba(20,35,27,0)); }
+.footer-link { background:none; border:none; cursor:pointer;
+  font-family:'Cormorant Garamond',serif; font-size:.95rem; font-style:italic;
+  letter-spacing:1px; color:#C9BFAF; text-decoration:none; transition:color .3s; }
+.footer-link:hover { color:var(--terracotta-soft); }
+.footer-sep { color:rgba(201,169,106,0.5); }
+@media (max-width:700px) {
+  body { padding:24px 10px 92px; }
+  .page { padding:36px 24px; }
+  .page::after { inset:7px; }
+}
